@@ -1,0 +1,14 @@
+#!/usr/bin/env php
+<?php
+
+require dirname(__DIR__) . '/vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+
+/** @var ContainerInterface $container */
+$container = (new App\Framework())->getContainer();
+
+/** @var Application $app */
+$app = $container->get(Application::class);
+$app->run();

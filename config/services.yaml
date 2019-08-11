@@ -1,0 +1,22 @@
+parameters:
+  app.name: Magento 2 Generator
+  app.version: 0.1.0
+
+services:
+  _defaults:
+    autowire: true
+
+  App\:
+    resource: '../src/*'
+    exclude: '../src/Framework.php'
+
+  Symfony\Component\Console\Application:
+    public: true
+    shared: false
+    arguments:
+      - '%app.name%'
+      - '%app.version%'
+    calls:
+      - method: addCommands
+        arguments:
+          - ['@App\Console\ModuleCommand']

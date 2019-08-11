@@ -1,0 +1,30 @@
+{
+    "name": "igorsdv/m2-gen",
+    "description": "Magento 2 Generator",
+    "type": "project",
+    "require": {
+        "symfony/config": "^4.3",
+        "symfony/console": "^4.3",
+        "symfony/dependency-injection": "^4.3",
+        "symfony/yaml": "^4.3"
+    },
+    "config": {
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Igor Sadikov",
+            "email": "igor@vokidas.com"
+        }
+    ],
+    "minimum-stability": "alpha"
+}
