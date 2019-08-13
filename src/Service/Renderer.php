@@ -22,7 +22,7 @@ class Renderer
     public function createAndRender(string $path, string $template, array $data): void
     {
         if (file_exists($path)) {
-            throw new \RuntimeException("The module.xml file already exists.");
+            throw new \RuntimeException("$path already exists.");
         }
 
         $this->render($path, $template, $data);

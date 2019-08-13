@@ -21,13 +21,19 @@ services:
       $file: etc/events.xml
       $xsd: urn:magento:framework:Event/etc/events.xsd
 
-  App\Console\GenerateDiCommand:
+  command.generate_di:
+    class: App\Console\GenerateXmlCommand
     arguments:
       $createXml: '@operation.create_di'
+      $name: 'generate:di'
+      $file: 'di.xml'
 
-  App\Console\GenerateEventsCommand:
+  command.generate_events:
+    class: App\Console\GenerateXmlCommand
     arguments:
       $createXml: '@operation.create_events'
+      $name: 'generate:events'
+      $file: 'events.xml'
 
   Symfony\Component\Console\Application:
     public: true
@@ -39,8 +45,8 @@ services:
         arguments:
           $commands:
             - '@App\Console\GenerateModuleCommand'
-            - '@App\Console\GenerateDiCommand'
-            - '@App\Console\GenerateEventsCommand'
+            - '@command.generate_di'
+            - '@command.generate_events'
 
   Symfony\Component\Filesystem\Filesystem:
 

@@ -13,17 +13,13 @@ class AbstractGenerateCommand extends Command
 {
     protected const ARGUMENT_MODULE_NAME = 'module_name';
 
-    protected $description = '';
-
     public function configure(): void
     {
-        $this
-            ->setDescription($this->description)
-            ->addArgument(
-                self::ARGUMENT_MODULE_NAME,
-                InputArgument::REQUIRED,
-                'The name of the module as Vendor_Module'
-            );
+        $this->addArgument(
+            self::ARGUMENT_MODULE_NAME,
+            InputArgument::REQUIRED,
+            'The name of the module as Vendor_Module'
+        );
     }
 
     protected function interact(InputInterface $input, OutputInterface $output)

@@ -10,8 +10,6 @@ class GenerateModuleCommand extends AbstractGenerateCommand
 {
     protected static $defaultName = 'generate:module';
 
-    protected $description = 'Generates the files required for a module';
-
     /** @var CreateModule */
     private $createModule;
 
@@ -20,6 +18,13 @@ class GenerateModuleCommand extends AbstractGenerateCommand
         parent::__construct();
 
         $this->createModule = $createModule;
+    }
+
+    public function configure(): void
+    {
+        $this->setDescription('Generates the files required for a module');
+
+        parent::configure();
     }
 
     public function execute(InputInterface $input, OutputInterface $output): void
