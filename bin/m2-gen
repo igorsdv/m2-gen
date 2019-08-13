@@ -1,13 +1,12 @@
 #!/usr/bin/env php
 <?php
 
-require dirname(__DIR__) . '/vendor/autoload.php';
+require dirname(__DIR__) . '/bootstrap.php';
 
+use App\DependencyInjection\ContainerFactory;
 use Symfony\Component\Console\Application;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
-/** @var ContainerInterface $container */
-$container = (new App\Framework())->getContainer();
+$container = ContainerFactory::create();
 
 /** @var Application $app */
 $app = $container->get(Application::class);

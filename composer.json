@@ -1,30 +1,34 @@
 {
-    "name": "igorsdv/m2-gen",
-    "description": "Magento 2 Generator",
-    "type": "project",
-    "require": {
-        "symfony/config": "^4.3",
-        "symfony/console": "^4.3",
-        "symfony/dependency-injection": "^4.3",
-        "symfony/yaml": "^4.3"
+  "name": "igorsdv/m2-gen",
+  "description": "Magento 2 Generator",
+  "type": "project",
+  "require": {
+    "ext-json": "*",
+    "symfony/config": "^4.3",
+    "symfony/console": "^4.3",
+    "symfony/dependency-injection": "^4.3",
+    "symfony/filesystem": "^4.3",
+    "symfony/options-resolver": "^4.3",
+    "symfony/yaml": "^4.3",
+    "twig/twig": "^2.11"
+  },
+  "config": {
+    "preferred-install": {
+      "*": "dist"
     },
-    "config": {
-        "preferred-install": {
-            "*": "dist"
-        },
-        "sort-packages": true
-    },
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        }
-    },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Igor Sadikov",
-            "email": "igor@vokidas.com"
-        }
-    ],
-    "minimum-stability": "alpha"
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Igor Sadikov",
+      "email": "igor@vokidas.com"
+    }
+  ],
+  "minimum-stability": "alpha"
 }

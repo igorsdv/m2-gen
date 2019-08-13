@@ -1,0 +1,5 @@
+<?php {% include 'partials/php-header.twig' %}
+
+use Magento\Framework\Component\ComponentRegistrar;
+
+ComponentRegistrar::register(ComponentRegistrar::MODULE, '{{ module_name }}', __DIR__);

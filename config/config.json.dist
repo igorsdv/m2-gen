@@ -1,0 +1,14 @@
+{
+  "debug": false,
+  "template_data": {
+    "author": {
+      "name": "Jane Doe",
+      "email": "jane.doe@example.org"
+    },
+    "company": {
+      "name": "Acme",
+      "website": "https://acme.example.org"
+    }
+  },
+  "template_directories": []
+}

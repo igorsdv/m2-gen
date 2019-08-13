@@ -8,15 +8,46 @@ services:
 
   App\:
     resource: '../src/*'
-    exclude: '../src/Framework.php'
+
+  operation.create_di:
+    class: App\Operation\CreateXml
+    arguments:
+      $file: etc/di.xml
+      $xsd: urn:magento:framework:ObjectManager/etc/config.xsd
+
+  operation.create_events:
+    class: App\Operation\CreateXml
+    arguments:
+      $file: etc/events.xml
+      $xsd: urn:magento:framework:Event/etc/events.xsd
+
+  App\Console\GenerateDiCommand:
+    arguments:
+      $createXml: '@operation.create_di'
+
+  App\Console\GenerateEventsCommand:
+    arguments:
+      $createXml: '@operation.create_events'
 
   Symfony\Component\Console\Application:
     public: true
-    shared: false
     arguments:
-      - '%app.name%'
-      - '%app.version%'
+      $name: '%app.name%'
+      $version: '%app.version%'
     calls:
       - method: addCommands
         arguments:
-          - ['@App\Console\ModuleCommand']
+          $commands:
+            - '@App\Console\GenerateModuleCommand'
+            - '@App\Console\GenerateDiCommand'
+            - '@App\Console\GenerateEventsCommand'
+
+  Symfony\Component\Filesystem\Filesystem:
+
+  twig.loader:
+    class: Twig\Loader\LoaderInterface
+    factory: ['@App\Twig\LoaderFactory', 'create']
+
+  Twig\Environment:
+    arguments:
+      - '@twig.loader'
